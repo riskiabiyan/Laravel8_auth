@@ -9,6 +9,7 @@
   </head>
   <body>
 
+
     <div class="container-fluid">
       <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">
@@ -17,12 +18,20 @@
         </a>
       </nav>
 
-     <div class="row mt-4">
-      <div class="col-lg-6 text-right">
+     <div class="row mt-4 d-flex justify-content-center">
+      <div class="col-lg-4">
         <a class="btn btn-warning" href="/login" role="button">Kembali ke Login</a>
       </div>
-      <div class="col-lg-6">
-        <a class="btn btn-danger" href="/register" role="button">Kembali ke Register</a>
+      <div class="col-lg-4">
+        <a class="btn btn-info" href="/register" role="button">Kembali ke Register</a>
+      </div>
+      <div class="col-lg-4">
+
+        <form action="/logout" method="POST">
+          @csrf
+          <button class="btn btn-danger">Logout</button>
+        </form>
+        
       </div>
      </div>
       

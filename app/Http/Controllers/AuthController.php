@@ -20,6 +20,9 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+        session()->flash('success','Thank you, you are now registers');
+
         return redirect('/login');
     }
 
@@ -32,16 +35,19 @@ class AuthController extends Controller
             'email' => $request -> email,
             'password' => $request -> password
         ])){
+            session()->flash('login_gagal','Thank you, you are now registers');
             return redirect('/login');
         }
         else{
+            $request->session()->regenerate();
             return redirect('/');
         }
     }
 
-    public function home(){
-        return view('home');
+    public function logout(Request $request){
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
     }
-
-
 }
